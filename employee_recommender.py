@@ -20,7 +20,7 @@ class recommendation_system:
     
     def content_based_recommender(self,user):
         job_ids=[]
-        with open("E:\machine learning\ML PROJECTS\job recommendation system\job details.csv",'r') as job_file:
+        with open(r"C:\\Users\\Adithya Ramesh\\Documents\\GitHub\\Employee-Recommendor\\job details.csv") as job_file:
             csv_obj=csv.reader(job_file)
             for row in csv_obj:
                 if len(job_ids)<3:
@@ -51,7 +51,7 @@ class recommendation_system:
         req_field=[]
         req_job_id=[]
         hash_map=dict()
-        with open("E:\machine learning\ML PROJECTS\job recommendation system\job details.csv",'r') as job_file:
+        with open(r"C:\\Users\\Adithya Ramesh\\Documents\\GitHub\\Employee-Recommendor\\job details.csv") as job_file:
             csv_obj=csv.reader(job_file)
             for row in csv_obj:
                 if row[0]==job_name:
@@ -64,7 +64,7 @@ class recommendation_system:
         for i in range(0,len(job_ids)):
             job_idss.append(job_ids[i][0])
         del job_ids
-        with open("E:\machine learning\ML PROJECTS\job recommendation system\job details.csv",'r') as job_file:
+        with open(r"C:\\Users\\Adithya Ramesh\\Documents\\GitHub\\Employee-Recommendor\\job details.csv") as job_file:
             csv_obj=csv.reader(job_file)
             for row in csv_obj:
                 if row[3]==sub_domain and row[0]!=job_name:
@@ -77,7 +77,7 @@ class recommendation_system:
     def data_extraction(self,job_name,job_ids):
         data=[]
         req_job_id,hash_map=self.content_recommender(job_name,job_ids)
-        with open("E:\machine learning\ML PROJECTS\job recommendation system\job feedback score.csv",'r') as job_file:
+        with open(r"C:\\Users\\Adithya Ramesh\\Documents\\GitHub\\Employee-Recommendor\\job feedback score.csv") as job_file:
             csv_obj=csv.reader(job_file)
             for row in csv_obj:
                 if (row[0] in req_job_id):
@@ -112,7 +112,7 @@ class recommendation_system:
     def score_prediction(self,job_name,job_ids):
         dist,ind,hash_map,req_job_id=self.inference(self.model,job_name,job_ids)
         avg=[]
-        with open("E:\machine learning\ML PROJECTS\job recommendation system\job feedback score.csv",'r') as job_file:
+        with open(r"C:\\Users\\Adithya Ramesh\\Documents\\GitHub\\Employee-Recommendor\\job feedback score.csv") as job_file:
             csv_obj=csv.reader(job_file)
             for row in csv_obj:
                 if (row[0] in req_job_id):
